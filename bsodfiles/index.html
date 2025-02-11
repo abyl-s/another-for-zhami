@@ -1,0 +1,112 @@
+<head>	
+	<title>You has been crashed!</title>
+	<link rel="icon" href="title.png" type="image/x-icon">
+</head>
+<body>
+<center>
+<div style="font-size: 20px;">
+Цвет фона: <input type="color" id="bsodbg" style="height:35px;width:60px;" value="#0086ac">
+Цвет шрифта: <input type="color" style="height:35px;width:60px;" id="bsodfc" value="#FFFFFF">
+<br>
+Дополнительные цвета: <button style="font-size: 15px;color:#fff;background:#0086ac;" onclick="bsodbg.value='#0086ac'">Синий 1</button>
+<button style="font-size: 15px;color:#fff;background:#006cd0;" onclick="bsodbg.value='#006cd0'">Синий 2</button>
+<button style="font-size: 15px;color:#fff;background:#096BAC;" onclick="bsodbg.value='#096BAC'">Синий 3</button>
+<button style="font-size: 15px;color:#fff;background:#003d92;" onclick="bsodbg.value='#003d92'">Синий 4</button>
+<button style="font-size: 15px;color:#fff;background:#246f24;" onclick="bsodbg.value='#246f24'">Версия с зелёным</button>
+<br><br>
+</center>
+:( &nbsp;<textarea name="bsli1" id="bssad">:(</textarea>
+<br>
+Первая строка: <textarea id="bsli1">Ваше устройство столкнулось с проблемой и нужно перезагрузиться.</textarea>
+<br>
+Вторая строка: <textarea id="bsli2">Мы собираем некоторую информацию, после чего перезагрузим ваше устройство.</textarea>
+<br>
+Третья строка: <textarea id="bsli3n" style="width:80px">100%</textarea><textarea id="bsli3">Завершено</textarea>
+<br>
+Четвертая строка: <textarea id="bsli4">Для получения дополнительной информации и возможных решений, пожалуйста, посетите </textarea>
+<br>
+Пятая строка: <textarea id="bsli5">https://www.windows.com/stopcode</textarea>
+<br>
+Шестая строка: <textarea id="bsli6">Если вы обращаетесь в службу поддержки, передайте им следующую информацию:</textarea>
+<br>
+Седьмая строка: <textarea id="bsli7">Код ошибки: CRITICAL_PROCESS_DIED</textarea>
+<br><br><input type="checkbox" name="" id="qrm" checked="">Показать QR-код
+<br><br>
+
+<div class="bsod_bg" id="bsod" style="background:#457948;">
+<div style="position: absolute; top:5%;left: 18%;">
+<span id="bsodsad" style="font-size:120pt; margin:0; margin-bottom:10pt">:(</span>
+<br><br>
+<p style="font-size:25pt; margin:0; padding:0">
+<span id="bsline1"></span>
+<br><span id="bsline2"></span>
+<br><br><span id="bsline3n">100%</span> <span id="bsline3"></span>
+</p>
+<br><br>
+<img id="qr" style="float:left;margin-right:30px;" src="qr.png">
+<div style="float:left;width:%;">
+<p style="font-size:14pt;margin-top:0px;margin-left:px;  padding:0;line-height:32px;"><span id="bsline4">
+</span><br><span id="bsline5"></span>
+<br><br><span id="bsline6"></span>
+<br><span id="bsline7"></span>
+</p>
+</div>
+</div>
+</div>
+
+</body>
+
+<link rel="stylesheet" type="text/css" href="All.css">
+<style type="text/css">
+	.bsod_bg{
+		cursor: none;
+		display: none;
+		position: absolute;
+		top: 0;
+		left: 0;
+		height:100%;
+		width:100%;
+		font-family: Segoe UI;
+		font-weight:;
+		color: ;
+	}
+</style>
+
+<script type="text/javascript"> 
+var col=setInterval(bsodset,1)
+function bsodset() {
+	bsod.style.background=bsodbg.value;
+	bsod.style.color=bsodfc.value
+	bsodsad.innerHTML=bssad.value
+    bsline1.innerHTML=bsli1.value
+    bsline2.innerHTML=bsli2.value
+    bsline3n.innerHTML=bsli3n.value    
+    bsline3.innerHTML=bsli3.value    
+    bsline4.innerHTML=bsli4.value
+    bsline5.innerHTML=bsli5.value
+    bsline6.innerHTML=bsli6.value 
+    bsline7.innerHTML=bsli7.value
+    if (qrm.checked) {
+	qr.style.display="block";
+    }    
+    else{
+	qr.style.display="none";
+    }
+}
+
+document.getElementById('bsod').style.display='block'; // Показываем BSOD сразу при загрузке
+
+function stop(){
+	return false;
+}
+
+function hotkey(){
+var a=window.event.keyCode;
+if(a==27){
+bsod.style.display="none";
+}
+}
+window.onload = function(){
+document.onkeydown = hotkey;
+};
+</script>
